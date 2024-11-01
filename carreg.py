@@ -3,19 +3,19 @@
 # This system is designed to register cars and their owners. It allows the user to add, update, and delete car records.
 # The system also provides the functionality to search for a car by its registration number and display all registered cars.
 
-class Car:
+class Vehicle:
     def __init__(self, reg_no, make, model, owner):
         self.reg_no = reg_no
         self.make = make
         self.model = model
         self.owner = owner
 
-    def display_car_info(self):
+    def display_vehicle_info(self):
         print(f"Registration Number: {self.reg_no}")
         print(f"Make: {self.make}")
         print(f"Model: {self.model}")
         print(f"Owner: {self.owner}")
-        print(self.owner, self.make, self.model, self.reg_no)
+
 
 class CarRegistrationSystem:
     def __init__(self):
@@ -54,7 +54,7 @@ class CarRegistrationSystem:
     def display_all_cars(self):
         if self.cars:
             for car in self.cars:
-                car.display_car_info()
+                car.display_vehicle_info()
                 
                 
         else:
@@ -62,7 +62,7 @@ class CarRegistrationSystem:
 
 #Includes polymorphism by overriding or overloading methods. For example, I can create a Truck class that inherits from the Car class and overrides the display_car_info method to display additional information specific to trucks.
 
-class Truck(Car):
+class Truck(Vehicle):
     def __init__(self, reg_no, make, model, owner, capacity):
         super().__init__(reg_no, make, model, owner)
         self.capacity = capacity
@@ -70,7 +70,7 @@ class Truck(Car):
 
     def  display_car_info(self):
         super().display_car_info()
-        print(f"Capacity: {self.capacity}")
+        print(f"Capacity in kilograms: {self.capacity}")
 
         
 #Includes encapsulation by making the car attributes private and providing getter and setter methods to access and modify them. For example, you can make the reg_no attribute private and provide a get_reg_no method to retrieve the registration number.
@@ -90,18 +90,7 @@ class Car:
 
 #Includes inheritance by creating a Vehicle class that contains common attributes and methods shared by cars and trucks. The Car and Truck classes can then inherit from the Vehicle class to reuse the common functionality.
 
-class Vehicle:
-    def __init__(self, reg_no, make, model, owner):
-        self.reg_no = reg_no
-        self.make = make
-        self.model = model
-        self.owner = owner
 
-    def display_vehicle_info(self):
-        print(f"Registration Number: {self.reg_no}")
-        print(f"Make: {self.make}")
-        print(f"Model: {self.model}")
-        print(f"Owner: {self.owner}")
 
 class Car(Vehicle):
     def __init__(self, reg_no, make, model, owner):
@@ -112,9 +101,9 @@ class Truck(Vehicle):
         super().__init__(reg_no, make, model, owner)
         self.capacity = capacity
 
-    def display_vehicle_info(self):
+    def display_car_info(self):
         super().display_vehicle_info()
-        print(f"Capacity: {self.capacity}")
+        print(f"Capacity in kilograms: {self.capacity}")
 
 class truckRegistrationSystem(CarRegistrationSystem):
     def __init__(self):
@@ -270,6 +259,8 @@ while choice=='2':
 
     else:
         print("Invalid choice. Please try again.")
+
+
 
     print()
 
