@@ -176,11 +176,11 @@ while choice=='1':
         make = input("Enter Make: ")
         model = input("Enter Model: ")
         owner = input("Enter Owner: ")
-        capacity = input("Enter Capacity: ")
+        
         car = Car(reg_no, make, model, owner)
-        truck= Truck(reg_no, make, model, owner, capacity)
+       
         car_system.add_car(car)
-        car_system.add_car(truck)
+      
 
     elif choice == '2':
         reg_no = input("Enter Registration Number: ")
